@@ -117,7 +117,8 @@
                 url: queryURL,
                 method: "GET"
             }).then(function (response) {
-                console.log(response);
+                var newResponse = JSON.stringify(response);
+                console.log(newResponse);
             })
         })
     </script>
