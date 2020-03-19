@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -16,97 +16,111 @@
     <div class="page-header">
         <h1>Weather Report</h1>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="row">
+                    <form>
+                        <label>Search for a City:</label><br>
+                        <input id="user-input" type="text"><br><br>
+                        <button>
+                            <i id="button" class="fas fa-search"></i>
+                        </button>
+                    </form>
 
-    <div class="row">
-        <div class="col-md-2">
-            <div class="row">
-                <form>
-                    <label>Search for a City:</label><br>
-                    <input type="text"><br><br>
-                    <button>
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-
+                </div>
+                <div class="row">
+                    <table>
+                        <tr>
+                            <td>Austin</td>
+                        </tr>
+                        <tr>
+                            <td>Austin</td>
+                        </tr>
+                        <tr>
+                            <td>Austin</td>
+                        </tr>
+                        <tr>
+                            <td>Austin</td>
+                        </tr>
+                        <tr>
+                            <td>Austin</td>
+                        </tr>
+                        <tr>
+                            <td>Austin</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div class="row">
-                <table>
-                    <tr>
-                        <td>Austin</td>
-                    </tr>
-                    <tr>
-                        <td>Austin</td>
-                    </tr>
-                    <tr>
-                        <td>Austin</td>
-                    </tr>
-                    <tr>
-                        <td>Austin</td>
-                    </tr>
-                    <tr>
-                        <td>Austin</td>
-                    </tr>
-                    <tr>
-                        <td>Austin</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="col-md-10">
-            <div class="row" id="top">
-                <p>Current City</p><br>
-                <p>Temperature</p>
-                <p>Humidity</p>
-                <p>Wind Speed</p>
-                <p>Weather Conditions</p>
-                <p>UV Index</p>
-            </div>
-            <div class="row" id="bottom">
-                <!-- 5 bootstrap cards here -->
-                <div class="card-container">
-                    <div class="card" id="card-1" style="max-width: 10rem;">
-                        <div class="card-header">day/date</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Primary card title</h5>
-                            <p class="card-text">Icon, temp, humidity</p>
+            <div class="col-md-10">
+                <div class="row2" id="city">Current City:</div>
+                <div class="row2" id="temp">Temperature:</div>
+                <div class="row2" id="humid">Humidity:</div>
+                <div class="row2" id="wind">Wind Speed:</div>
+                <div class="row2" id="conditions">Weather Conditions:</div>
+                <div class="row2" id="index">UV Index:</div><br>
+                <div class="row3" id="bottom">
+                    <!-- 5 bootstrap cards here -->
+                    <div class="card-container">
+                        <div class="card" id="card-1" style="max-width: 10rem;">
+                            <div class="card-header">day/date</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Primary card title</h5>
+                                <p class="card-text">Icon, temp, humidity</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card" id="card-2" style="max-width: 10rem;">
-                        <div class="card-header">day/date</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Secondary card title</h5>
-                            <p class="card-text">Icon, temp, humidity</p>
+                        <div class="card" id="card-2" style="max-width: 10rem;">
+                            <div class="card-header">day/date</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Secondary card title</h5>
+                                <p class="card-text">Icon, temp, humidity</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card" id="card-3" style="max-width: 10rem;">
-                        <div class="card-header">day/date</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Success card title</h5>
-                            <p class="card-text">Icon, temp, humidity</p>
+                        <div class="card" id="card-3" style="max-width: 10rem;">
+                            <div class="card-header">day/date</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Success card title</h5>
+                                <p class="card-text">Icon, temp, humidity</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card" id="card-4" style="max-width: 10rem;">
-                        <div class="card-header">day/date</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Danger card title</h5>
-                            <p class="card-text">Icon, temp, humidity</p>
+                        <div class="card" id="card-4" style="max-width: 10rem;">
+                            <div class="card-header">day/date</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Danger card title</h5>
+                                <p class="card-text">Icon, temp, humidity</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card" id="card-5" style="max-width: 10rem;">
-                        <div class="card-header">day/date</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Warning card title</h5>
-                            <p class="card-text">Icon, temp, humidity</p>
+                        <div class="card" id="card-5" style="max-width: 10rem;">
+                            <div class="card-header">day/date</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Warning card title</h5>
+                                <p class="card-text">Icon, temp, humidity</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
         </div>
 
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script type="text/javascript">
 
+        $("#button").on("click", function (event) {
+            event.preventDefault();
+            var userCity = $("#user-input").val();
+            var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + userCity + "&appid=d3c897154ff62ec9770b10172a75be35"
 
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function (response) {
+                console.log(response);
+            })
+        })
+    </script>
 </body>
 
 </html>
