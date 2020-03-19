@@ -53,11 +53,11 @@
                 </div>
             </div>
             <div class="col-md-10">
-                <div class="row2" id="city">Current City: &nbsp; &nbsp;  </div>
-                <div class="row2" id="temp">Temperature: &nbsp; &nbsp;  </div>
-                <div class="row2" id="humid">Humidity:  &nbsp; &nbsp; </div>
-                <div class="row2" id="wind">Wind Speed: &nbsp; &nbsp;  </div>
-                <div class="row2" id="conditions">Weather Conditions: &nbsp; &nbsp;  </div><br>
+                <div class="row2" id="city">Current City: &nbsp; &nbsp; </div>
+                <div class="row2" id="temp">Temperature: &nbsp; &nbsp; </div>
+                <div class="row2" id="humid">Humidity: &nbsp; &nbsp; </div>
+                <div class="row2" id="wind">Wind Speed: &nbsp; &nbsp; </div>
+                <div class="row2" id="conditions">Weather Conditions: &nbsp; &nbsp; </div><br>
                 <div class="row3" id="bottom">
                     <!-- 5 bootstrap cards here -->
                     <div class="card-container">
@@ -106,7 +106,7 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
     <script type="text/javascript">
-
+        // on button click, weather api is called to populate all info to page and stores city to local storage
         $("#button").on("click", function (event) {
             event.preventDefault();
             var userCity = $("#user-input").val();
@@ -118,18 +118,51 @@
             }).then(function (response) {
                 console.log(response);
                 var temp = response.main.temp;
-                $("#temp").append(temp);
+                $("#temp").text(temp);
                 var humidity = response.main.humidity;
-                $("#humid").append(humidity + "%");
+                $("#humid").text(humidity + "%");
                 var wind = response.wind.speed;
-                $("#wind").append(wind + "mph");
+                $("#wind").text(wind + "mph");
                 var conditions = response.weather[0].main;
-                $("#conditions").append(conditions);
+                $("#conditions").text(conditions);
                 var city = response.name;
-                $("#city").append(city);
-                
+                $("#city").text(city);
+                var city = document.getElementById("user-input").value;
+                localStorage.setItem("#user-input", city);
             })
         })
+
+        // gets city back from local storage and places in user input
+        function getLatestSearch() {
+            if (localStorage != null);
+            document.getElementById("user-input").value = localStorage.getItem("#user-input");
+        }
+        // returns all info to page via most recent city storage by doing ajax call again
+        function returnAll() {
+            var userCity = $("#user-input").val();
+            var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + userCity + "&units=imperial&appid=d3c897154ff62ec9770b10172a75be35"
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function (response) {
+                console.log(response);
+                var temp = response.main.temp;
+                $("#temp").text(temp);
+                var humidity = response.main.humidity;
+                $("#humid").text(humidity + "%");
+                var wind = response.wind.speed;
+                $("#wind").text(wind + "mph");
+                var conditions = response.weather[0].main;
+                $("#conditions").text(conditions);
+                var city = response.name;
+                $("#city").text(city);
+            })
+        }
+        // call function getlatestsearch to put city into input field
+        getLatestSearch();
+        // and then get all weather info for city by calling function returnAll
+        returnAll();
     </script>
 </body>
 
