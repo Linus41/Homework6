@@ -62,3 +62,9 @@ h2 {
     /* margin-left: 40px; */
     height: 215px;
 }
+.row {
+    width: auto;
+}
+.container2 {
+    width: 1140px;
+}
