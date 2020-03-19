@@ -53,12 +53,11 @@
                 </div>
             </div>
             <div class="col-md-10">
-                <div class="row2" id="city">Current City:</div>
-                <div class="row2" id="temp">Temperature:</div>
-                <div class="row2" id="humid">Humidity:</div>
-                <div class="row2" id="wind">Wind Speed:</div>
-                <div class="row2" id="conditions">Weather Conditions:</div>
-                <div class="row2" id="index">UV Index:</div><br>
+                <div class="row2" id="city">Current City: &nbsp; &nbsp;  </div>
+                <div class="row2" id="temp">Temperature: &nbsp; &nbsp;  </div>
+                <div class="row2" id="humid">Humidity:  &nbsp; &nbsp; </div>
+                <div class="row2" id="wind">Wind Speed: &nbsp; &nbsp;  </div>
+                <div class="row2" id="conditions">Weather Conditions: &nbsp; &nbsp;  </div><br>
                 <div class="row3" id="bottom">
                     <!-- 5 bootstrap cards here -->
                     <div class="card-container">
@@ -111,14 +110,24 @@
         $("#button").on("click", function (event) {
             event.preventDefault();
             var userCity = $("#user-input").val();
-            var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + userCity + "&appid=d3c897154ff62ec9770b10172a75be35"
+            var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + userCity + "&units=imperial&appid=d3c897154ff62ec9770b10172a75be35"
 
             $.ajax({
                 url: queryURL,
                 method: "GET"
             }).then(function (response) {
-                var newResponse = JSON.stringify(response);
-                console.log(newResponse);
+                console.log(response);
+                var temp = response.main.temp;
+                $("#temp").append(temp);
+                var humidity = response.main.humidity;
+                $("#humid").append(humidity + "%");
+                var wind = response.wind.speed;
+                $("#wind").append(wind + "mph");
+                var conditions = response.weather[0].main;
+                $("#conditions").append(conditions);
+                var city = response.name;
+                $("#city").append(city);
+                
             })
         })
     </script>

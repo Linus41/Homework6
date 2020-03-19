@@ -4,8 +4,10 @@
     border: 2px solid black;
     padding: 20px;
     margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
     color: black;
-    width: auto;
+    width: 1140px;
 }
 
 
@@ -30,32 +32,32 @@ h2 {
     float: left;
     height: 212px;
     margin-top: 20px;
-    margin-right: 2px;
+    margin-right: 15px;
 }
 .card-header {
     height: 80px;
 }
 #card-1 {
-    background-color: red;
-    margin-left: 15px;
+    background-color: seashell;
+    margin-left: 20px;
 }
 #card-2 {
-    background-color: orange;
+    background-color:seashell;
 }
 #card-3 {
-    background-color: yellow;
+    background-color: seashell;
 }
 #card-4 {
-    background-color: limegreen; 
+    background-color: seashell; 
 }
 #card-5 {
-    background-color: blue;
+    background-color:seashell;
 }
 .card-container {
     /* margin: 5px; */
     border: 1px solid black;
     height: 250px;
-    width: 840px;
+    width: 900px;
     position: relative;
 }
 #top {
@@ -69,4 +71,5 @@ h2 {
 #city {
     font-size: 20px;
     font-weight: bold;
+    margin-top: 20px;
 }
