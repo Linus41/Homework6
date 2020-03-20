@@ -53,55 +53,62 @@
                 </div>
             </div>
             <div class="col-md-10">
-                <div class="row2" id="city">Current City: &nbsp; &nbsp; </div>
-                <div class="row2" id="temp">Temperature: &nbsp; &nbsp; </div>
-                <div class="row2" id="humid">Humidity: &nbsp; &nbsp; </div>
-                <div class="row2" id="wind">Wind Speed: &nbsp; &nbsp; </div>
-                <div class="row2" id="conditions">Weather Conditions: &nbsp; &nbsp; </div><br>
-                <div class="row3" id="bottom">
-                    <!-- 5 bootstrap cards here -->
-                    <div class="card-container">
-                        <div class="card" id="card-1" style="max-width: 10rem;">
-                            <div class="card-header">day/date</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Primary card title</h5>
-                                <p class="card-text">Icon, temp, humidity</p>
-                            </div>
+                <!-- <div class="row"> -->
+                    
+                        <h1 id="city"></h1>
+                        <h2 id="temp">Temperature</h2>
+                        <h2 id="humid">Humidity</h2>
+                        <h2 id="wind">Wind Speed</h2>
+                        <h2 id="conditions">Weather Conditions</h2>
+                        <h2>UV Index: <span id="index"></span></h2>
+
+                    
+
+                <!-- </div>
+                 -->
+                <!-- 5 bootstrap cards here -->
+                <div class="card-container">
+                    <div class="card" id="card-1" style="max-width: 10rem;">
+                        <div class="card-header">day/date</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Primary card title</h5>
+                            <p class="card-text">Icon, temp, humidity</p>
                         </div>
-                        <div class="card" id="card-2" style="max-width: 10rem;">
-                            <div class="card-header">day/date</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Secondary card title</h5>
-                                <p class="card-text">Icon, temp, humidity</p>
-                            </div>
+                    </div>
+                    <div class="card" id="card-2" style="max-width: 10rem;">
+                        <div class="card-header">day/date</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Secondary card title</h5>
+                            <p class="card-text">Icon, temp, humidity</p>
                         </div>
-                        <div class="card" id="card-3" style="max-width: 10rem;">
-                            <div class="card-header">day/date</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Success card title</h5>
-                                <p class="card-text">Icon, temp, humidity</p>
-                            </div>
+                    </div>
+                    <div class="card" id="card-3" style="max-width: 10rem;">
+                        <div class="card-header">day/date</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Success card title</h5>
+                            <p class="card-text">Icon, temp, humidity</p>
                         </div>
-                        <div class="card" id="card-4" style="max-width: 10rem;">
-                            <div class="card-header">day/date</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Danger card title</h5>
-                                <p class="card-text">Icon, temp, humidity</p>
-                            </div>
+                    </div>
+                    <div class="card" id="card-4" style="max-width: 10rem;">
+                        <div class="card-header">day/date</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Danger card title</h5>
+                            <p class="card-text">Icon, temp, humidity</p>
                         </div>
-                        <div class="card" id="card-5" style="max-width: 10rem;">
-                            <div class="card-header">day/date</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Warning card title</h5>
-                                <p class="card-text">Icon, temp, humidity</p>
-                            </div>
+                    </div>
+                    <div class="card" id="card-5" style="max-width: 10rem;">
+                        <div class="card-header">day/date</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Warning card title</h5>
+                            <p class="card-text">Icon, temp, humidity</p>
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
+
+    </div>
 
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
@@ -110,36 +117,45 @@
         $("#button").on("click", function (event) {
             event.preventDefault();
             var userCity = $("#user-input").val();
-            var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + userCity + "&units=imperial&appid=d3c897154ff62ec9770b10172a75be35"
-
+            returnAll(userCity);
+            
+        })
+        function index(lat, lon) {
+            console.log(lat, lon, "inside UV Index");
             $.ajax({
-                url: queryURL,
-                method: "GET"
+                type: "GET",
+                url: "http://api.openweathermap.org/data/2.5/uvi?appid=d3c897154ff62ec9770b10172a75be35&lat=" + lat + "&lon=" + lon,
+                dataType: "json"
             }).then(function (response) {
                 console.log(response);
-                var temp = response.main.temp;
-                $("#temp").text(temp);
-                var humidity = response.main.humidity;
-                $("#humid").text(humidity + "%");
-                var wind = response.wind.speed;
-                $("#wind").text(wind + "mph");
-                var conditions = response.weather[0].main;
-                $("#conditions").text(conditions);
-                var city = response.name;
-                $("#city").text(city);
-                var city = document.getElementById("user-input").value;
-                localStorage.setItem("#user-input", city);
+                var index = response.value;
+                $("#index").text(index)
+                if (response.value < 3)  {
+                    $("#index").addClass("mild");
+                    $("#index").removeClass("moderate");
+                    $("#index").removeClass("severe");
+                } else if (response.value > 3 && response.value < 7) {
+                    $("#index").addClass("moderate");
+                    $("#index").removeClass("mild");
+                    $("#index").removeClass("severe");
+                } else {
+                    $("#index").addClass("severe");
+                    $("#index").removeClass("moderate");
+                    $("#index").removeClass("mild");
+                }
             })
-        })
+        }
 
         // gets city back from local storage and places in user input
         function getLatestSearch() {
             if (localStorage != null);
             document.getElementById("user-input").value = localStorage.getItem("#user-input");
+            console.log(document.getElementById("user-input").value)
+            returnAll(document.getElementById("user-input").value);
         }
         // returns all info to page via most recent city storage by doing ajax call again
-        function returnAll() {
-            var userCity = $("#user-input").val();
+        function returnAll(userCity) {
+            // var userCity = $("#user-input").val();
             var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + userCity + "&units=imperial&appid=d3c897154ff62ec9770b10172a75be35"
 
             $.ajax({
@@ -148,21 +164,27 @@
             }).then(function (response) {
                 console.log(response);
                 var temp = response.main.temp;
-                $("#temp").text(temp);
+                $("#temp").text("Temperature: " + temp + "°F");
                 var humidity = response.main.humidity;
-                $("#humid").text(humidity + "%");
+                $("#humid").text("Humidity: " + humidity + "%");
                 var wind = response.wind.speed;
-                $("#wind").text(wind + "mph");
+                $("#wind").text("Wind Speed: " + wind + "mph");
                 var conditions = response.weather[0].main;
-                $("#conditions").text(conditions);
+                $("#conditions").text("Weather Conditions: " + conditions);
                 var city = response.name;
                 $("#city").text(city);
+                var city = document.getElementById("user-input").value;
+                localStorage.setItem("#user-input", city);
+                var latitude = response.coord.lat;
+                var longitude = response.coord.lon;
+                index(latitude, longitude);
+                console.log(latitude, longitude);
             })
         }
         // call function getlatestsearch to put city into input field
         getLatestSearch();
         // and then get all weather info for city by calling function returnAll
-        returnAll();
+        // returnAll(userCity);
     </script>
 </body>
 
