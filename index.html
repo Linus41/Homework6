@@ -32,72 +32,72 @@
                 <div class="row">
                     <table>
                         <tr>
-                            <td>Austin</td>
+                            <td id="Austin">Austin</td>
                         </tr>
                         <tr>
-                            <td>Austin</td>
+                            <td id="Baltimore">Baltimore</td>
                         </tr>
                         <tr>
-                            <td>Austin</td>
+                            <td id="Denver">Denver</td>
                         </tr>
                         <tr>
-                            <td>Austin</td>
+                            <td id="New-York">New York</td>
                         </tr>
                         <tr>
-                            <td>Austin</td>
+                            <td id="Los-Angeles">Los Angeles</td>
                         </tr>
                         <tr>
-                            <td>Austin</td>
+                            <td id="Detroit">Detroit</td>
                         </tr>
                     </table>
                 </div>
             </div>
             <div class="col-md-10">
                 <!-- <div class="row"> -->
-                    
-                        <h1 id="city"></h1>
-                        <h2 id="temp">Temperature</h2>
-                        <h2 id="humid">Humidity</h2>
-                        <h2 id="wind">Wind Speed</h2>
-                        <h2 id="conditions">Weather Conditions</h2>
-                        <h2>UV Index: <span id="index"></span></h2>
 
-                    
+                <h1 id="city"></h1>
+                <h2 id="temp">Temperature</h2>
+                <h2 id="humid">Humidity</h2>
+                <h2 id="wind">Wind Speed</h2>
+                <h2 id="conditions">Weather Conditions</h2>
+                <h2>UV Index: <span id="index"></span></h2>
+
+
 
                 <!-- </div>
                  -->
                 <!-- 5 bootstrap cards here -->
                 <div class="card-container">
-                    <div class="card" id="card-1" style="max-width: 10rem;">
-                        <div class="card-header">day/date</div>
+                    <div class="card" style="max-width: 10rem;">
+                        <div class="card-header" id="card-1"></div>
                         <div class="card-body">
                             <h5 class="card-title">Primary card title</h5>
                             <p class="card-text">Icon, temp, humidity</p>
                         </div>
                     </div>
-                    <div class="card" id="card-2" style="max-width: 10rem;">
-                        <div class="card-header">day/date</div>
+                    <div class="card" style="max-width: 10rem;">
+                        <div class="card-header" id="card-2">day/date</div>
                         <div class="card-body">
                             <h5 class="card-title">Secondary card title</h5>
                             <p class="card-text">Icon, temp, humidity</p>
                         </div>
                     </div>
-                    <div class="card" id="card-3" style="max-width: 10rem;">
-                        <div class="card-header">day/date</div>
+                    <div class="card" style="max-width: 10rem;">
+                        <div class="card-header" id="card-3">day/date</div>
                         <div class="card-body">
                             <h5 class="card-title">Success card title</h5>
                             <p class="card-text">Icon, temp, humidity</p>
                         </div>
                     </div>
-                    <div class="card" id="card-4" style="max-width: 10rem;">
-                        <div class="card-header">day/date</div>
+                    <div class="card" style="max-width: 10rem;">
+                        <div class="card-header" id="card-4">day/date</div>
                         <div class="card-body">
                             <h5 class="card-title">Danger card title</h5>
                             <p class="card-text">Icon, temp, humidity</p>
                         </div>
                     </div>
-                    <div class="card" id="card-5" style="max-width: 10rem;">
-                        <div class="card-header">day/date</div>
+                    <div class="card" style="max-width: 10rem;">
+                        <div class="card-header" id="card-5">day/date</div>
                         <div class="card-body">
                             <h5 class="card-title">Warning card title</h5>
                             <p class="card-text">Icon, temp, humidity</p>
@@ -113,12 +113,29 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
     <script type="text/javascript">
+        var dayOne = moment();
+        var dayCardOne = document.getElementById("card-1");
+        dayCardOne.innerHTML = dayOne.format("dddd");
+        var dayTwo = moment().add(1, "days");
+        var dayCardTwo = document.getElementById("card-2");
+        dayCardTwo.innerHTML = dayTwo.format("dddd");
+        var dayThree = moment().add(2, "days");
+        var dayCardThree = document.getElementById("card-3");
+        dayCardThree.innerHTML = dayThree.format("dddd");
+        var dayFour = moment().add(3, "days");
+        var dayCardFour = document.getElementById("card-4");
+        dayCardFour.innerHTML = dayFour.format("dddd");
+        var dayFive = moment().add(4, "days");
+        var dayCardFive = document.getElementById("card-5");
+        dayCardFive.innerHTML = dayFive.format("dddd");
         // on button click, weather api is called to populate all info to page and stores city to local storage
         $("#button").on("click", function (event) {
             event.preventDefault();
             var userCity = $("#user-input").val();
             returnAll(userCity);
-            
+
+
+
         })
         function index(lat, lon) {
             console.log(lat, lon, "inside UV Index");
@@ -130,7 +147,7 @@
                 console.log(response);
                 var index = response.value;
                 $("#index").text(index)
-                if (response.value < 3)  {
+                if (response.value < 3) {
                     $("#index").addClass("mild");
                     $("#index").removeClass("moderate");
                     $("#index").removeClass("severe");
