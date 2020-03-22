@@ -25,7 +25,7 @@
                         <input id="user-input" type="text"><br><br>
                         <button>
                             <i id="button" class="fas fa-search"></i>
-                        </button>
+                        </button><br><br>
                     </form>
 
                 </div>
@@ -70,8 +70,8 @@
                     <div class="card" style="max-width: 10rem;">
                         <div class="card-header" id="card-1"></div>
                         <div class="card-body">
-                            <i id="icon-one" class="card-title"></i>
-                            <p id="temp-one" class="card-text"> </p>
+                            <p id="icon-one" class="card-title"></p>
+                            <p id="temp-one" class="card-text"></p>
                         </div>
                     </div>
                     <div class="card" style="max-width: 10rem;">
@@ -177,7 +177,6 @@
         }
         // returns all info to page via most recent city storage by doing ajax call again
         function returnAll(userCity) {
-            // var userCity = $("#user-input").val();
             var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + userCity + "&units=imperial&appid=d3c897154ff62ec9770b10172a75be35"
 
             $.ajax({
@@ -202,9 +201,22 @@
                 index(latitude, longitude);
                 console.log(latitude, longitude);
                 var iconOne = response.weather[0].icon;
-                // $("#icon-one").attr(src=iconOne);
                 console.log(iconOne);
-                // $("#temp-one").val(response.main.temp);
+                $("#icon-one").attr(src=iconOne);
+                
+            })
+            var fiveDayURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + userCity + "&units=imperial&appid=d3c897154ff62ec9770b10172a75be35"
+
+            $.ajax({
+                url: fiveDayURL,
+                method: "GET"
+            }).then(function (response) {
+                console.log(response);
+                $("#temp-one").text("Temp:  " + response.list[0].main.temp + "°F");
+                $("#temp-two").text("Temp:  " + response.list[1].main.temp + "°F");
+                $("#temp-three").text("Temp:  " + response.list[2].main.temp + "°F");
+                $("#temp-four").text("Temp:  " + response.list[3].main.temp + "°F");
+                $("#temp-five").text("Temp:  " + response.list[4].main.temp + "°F");
             })
         }
         // call function getlatestsearch to put city into input field
