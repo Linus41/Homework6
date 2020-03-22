@@ -79,11 +79,6 @@
                 <h2 id="conditions">Weather Conditions</h2>
                 <h2>UV Index: <span id="index"></span></h2>
 
-
-
-                <!-- </div>
-                 -->
-                <!-- 5 bootstrap cards here -->
                 <div class="card-container">
                     <div class="card" style="max-width: 10rem;">
                         <div class="card-header" id="card-1"></div>
@@ -151,14 +146,11 @@
         var dayFive = moment().add(4, "days");
         var dayCardFive = document.getElementById("card-5");
         dayCardFive.innerHTML = dayFive.format("MM/DD/YYYY");
-        // on button click, weather api is called to populate all info to page and stores city to local storage
+       
         $("#button").on("click", function (event) {
             event.preventDefault();
             var userCity = $("#user-input").val();
             returnAll(userCity);
-
-
-
         })
 
         function index(lat, lon) {
@@ -187,15 +179,13 @@
             })
         }
 
-        // gets city back from local storage and places in user input
         function getLatestSearch() {
             if (localStorage != null);
             document.getElementById("user-input").value = localStorage.getItem("#user-input");
             console.log(document.getElementById("user-input").value)
             returnAll(document.getElementById("user-input").value);
-            
         }
-        // returns all info to page via most recent city storage by doing ajax call again
+        
         function returnAll(userCity) {
             var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + userCity + "&units=imperial&appid=d3c897154ff62ec9770b10172a75be35"
 
@@ -222,9 +212,8 @@
                 console.log(latitude, longitude);
                 var currentDate = moment().format("MM/DD/YYYY");
                 $("#city").append(": " + currentDate);
-
-
             })
+
             var fiveDayURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + userCity + "&units=imperial&appid=d3c897154ff62ec9770b10172a75be35"
 
             $.ajax({
@@ -237,11 +226,13 @@
                 $("#temp-three").text("Temp:  " + response.list[2].main.temp + "°F");
                 $("#temp-four").text("Temp:  " + response.list[3].main.temp + "°F");
                 $("#temp-five").text("Temp:  " + response.list[4].main.temp + "°F");
+               
                 $("#hum-one").text("Humidity: " + response.list[0].main.humidity + "%");
                 $("#hum-two").text("Humidity: " + response.list[1].main.humidity + "%");
                 $("#hum-three").text("Humidity: " + response.list[2].main.humidity + "%");
                 $("#hum-four").text("Humidity: " + response.list[3].main.humidity + "%");
                 $("#hum-five").text("Humidity: " + response.list[4].main.humidity + "%");
+                
                 var iconOne = response.list[0].weather[0].icon;
                 console.log(iconOne);
                 $("#icon-one").attr("src", "https://openweathermap.org/img/wn/" + iconOne + "@2x.png");
@@ -257,9 +248,7 @@
                 var iconFive = response.list[4].weather[0].icon;
                 console.log(iconFive);
                 $("#icon-five").attr("src", "https://openweathermap.org/img/wn/" + iconFive + "@2x.png");
-
             })
-
         }
 
         getLatestSearch();
