@@ -9,8 +9,13 @@
     color: black;
     width: 1140px;
 }
-
-
+#button {
+    background-color: red;
+   
+}
+#search {
+    background-color: red;
+}
 table, td {
     border: 1px solid black;
     width: 178px;
@@ -35,9 +40,12 @@ h2 {
     margin-top: 20px;
     margin-right: 15px;
     width: 165px;
+    background-color: teal;
+    color: white;
 }
 .card-header {
     height: 50px;
+    color: black;
 }
 #card-1 {
     background-color: seashell;

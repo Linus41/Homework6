@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -24,7 +23,7 @@
                     <form>
                         <label>Search for a City:</label><br>
                         <input id="user-input" type="text"><br><br>
-                        <button>
+                        <button id="search">
                             <i id="button" class="fas fa-search"></i>
                         </button><br><br>
                     </form>
@@ -33,22 +32,40 @@
                 <div class="row">
                     <table>
                         <tr>
-                            <td id="Austin">Austin</td>
+                            <td>
+                                <button id="Austin">Austin</button>
+
+                            </td>
                         </tr>
                         <tr>
-                            <td id="Baltimore">Baltimore</td>
+                            <td>
+                                <button id="Baltimore">Baltimore</button>
+
+                            </td>
                         </tr>
                         <tr>
-                            <td id="Denver">Denver</td>
+                            <td>
+                                <button id="Denver">Denver</button>
+
+                            </td>
                         </tr>
                         <tr>
-                            <td id="New-York">New York</td>
+                            <td>
+                                <button id="New York">New York</button>
+
+                            </td>
                         </tr>
                         <tr>
-                            <td id="Los-Angeles">Los Angeles</td>
+                            <td>
+                                <button id="Los Angeles">Los Angeles</button>
+
+                            </td>
                         </tr>
                         <tr>
-                            <td id="Detroit">Detroit</td>
+                            <td>
+                                <button id="Detroit">Detroit</button>
+
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -143,10 +160,10 @@
 
         })
         function featureCities() {
-        var austin = document.getElementById("Austin");
-        austin.addEventListener("click", function() {
-            $("#user-input").text(austin);
-        })
+            var austin = document.getElementById("Austin");
+            austin.addEventListener("click", function () {
+                $("#user-input").text(austin);
+            })
         }
         function index(lat, lon) {
             console.log(lat, lon, "inside UV Index");
@@ -206,8 +223,8 @@
                 var longitude = response.coord.lon;
                 index(latitude, longitude);
                 console.log(latitude, longitude);
-               
-                
+
+
             })
             var fiveDayURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + userCity + "&units=imperial&appid=d3c897154ff62ec9770b10172a75be35"
 
@@ -222,13 +239,13 @@
                 $("#temp-four").text("Temp:  " + response.list[3].main.temp + "°F");
                 $("#temp-five").text("Temp:  " + response.list[4].main.temp + "°F");
                 $("#hum-one").text("Humidity: " + response.list[0].main.humidity + "%");
-                
+
                 $("#hum-two").text("Humidity: " + response.list[1].main.humidity + "%");
-                
+
                 $("#hum-three").text("Humidity: " + response.list[2].main.humidity + "%");
-               
+
                 $("#hum-four").text("Humidity: " + response.list[3].main.humidity + "%");
-               
+
                 $("#hum-five").text("Humidity: " + response.list[4].main.humidity + "%");
                 var iconOne = response.list[0].weather[0].icon;
                 console.log(iconOne);
@@ -241,7 +258,7 @@
                 $("#icon-four").attr("src", "https://openweathermap.org/img/wn/" + iconFour + "@2x.png");
                 var iconFive = response.list[4].weather[0].icon;
                 $("#icon-five").attr("src", "https://openweathermap.org/img/wn/" + iconFive + "@2x.png");
-               
+
             })
         }
         // call function getlatestsearch to put city into input field
