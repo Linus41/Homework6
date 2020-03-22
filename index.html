@@ -115,19 +115,19 @@
     <script type="text/javascript">
         var dayOne = moment();
         var dayCardOne = document.getElementById("card-1");
-        dayCardOne.innerHTML = dayOne.format("dddd");
+        dayCardOne.innerHTML = dayOne.format("MM/DD/YYYY");
         var dayTwo = moment().add(1, "days");
         var dayCardTwo = document.getElementById("card-2");
-        dayCardTwo.innerHTML = dayTwo.format("dddd");
+        dayCardTwo.innerHTML = dayTwo.format("MM/DD/YYYY");
         var dayThree = moment().add(2, "days");
         var dayCardThree = document.getElementById("card-3");
-        dayCardThree.innerHTML = dayThree.format("dddd");
+        dayCardThree.innerHTML = dayThree.format("MM/DD/YYYY");
         var dayFour = moment().add(3, "days");
         var dayCardFour = document.getElementById("card-4");
-        dayCardFour.innerHTML = dayFour.format("dddd");
+        dayCardFour.innerHTML = dayFour.format("MM/DD/YYYY");
         var dayFive = moment().add(4, "days");
         var dayCardFive = document.getElementById("card-5");
-        dayCardFive.innerHTML = dayFive.format("dddd");
+        dayCardFive.innerHTML = dayFive.format("MM/DD/YYYY");
         // on button click, weather api is called to populate all info to page and stores city to local storage
         $("#button").on("click", function (event) {
             event.preventDefault();
@@ -136,6 +136,12 @@
 
 
 
+        })
+        $("#Austin").on("click", function () {
+            $.ajax({
+                type: "GET",
+                url: ""
+            })
         })
         function index(lat, lon) {
             console.log(lat, lon, "inside UV Index");
