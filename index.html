@@ -81,6 +81,7 @@
                         <div class="card-body">
                             <p class="card-title"><img id="icon-two" src=""></p>
                             <p id="temp-two" class="card-text"></p>
+                            <p id="hum-two"></p>
                         </div>
                     </div>
                     <div class="card" style="max-width: 10rem;">
@@ -88,6 +89,7 @@
                         <div class="card-body">
                             <p class="card-title"><img id="icon-three" src=""></p>
                             <p id="temp-three" class="card-text"></p>
+                            <p id="hum-three"></p>
                         </div>
                     </div>
                     <div class="card" style="max-width: 10rem;">
@@ -95,6 +97,7 @@
                         <div class="card-body">
                             <p class="card-title"><img id="icon-four" src=""></p>
                             <p id="temp-four" class="card-text"></p>
+                            <p id="hum-four"></p>
                         </div>
                     </div>
                     <div class="card" style="max-width: 10rem;">
@@ -102,6 +105,7 @@
                         <div class="card-body">
                             <p class="card-title"><img id="icon-five" src=""></p>
                             <p id="temp-five" class="card-text"></p>
+                            <p id="hum-five"></p>
                         </div>
                     </div>
                 </div>
@@ -217,7 +221,15 @@
                 $("#temp-three").text("Temp:  " + response.list[2].main.temp + "°F");
                 $("#temp-four").text("Temp:  " + response.list[3].main.temp + "°F");
                 $("#temp-five").text("Temp:  " + response.list[4].main.temp + "°F");
-                $("#hum-one").text("Humidity: " + response.list[0].main.humidity);
+                $("#hum-one").text("Humidity: " + response.list[0].main.humidity + "%");
+                
+                $("#hum-two").text("Humidity: " + response.list[1].main.humidity + "%");
+                
+                $("#hum-three").text("Humidity: " + response.list[2].main.humidity + "%");
+               
+                $("#hum-four").text("Humidity: " + response.list[3].main.humidity + "%");
+               
+                $("#hum-five").text("Humidity: " + response.list[4].main.humidity + "%");
                 var iconOne = response.list[0].weather[0].icon;
                 console.log(iconOne);
                 $("#icon-one").attr("src", "https://openweathermap.org/img/wn/" + iconOne + "@2x.png");
