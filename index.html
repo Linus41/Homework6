@@ -78,28 +78,28 @@
                     <div class="card" style="max-width: 10rem;">
                         <div class="card-header" id="card-2"></div>
                         <div class="card-body">
-                            <p id="icon2" class="card-title"></p>
+                            <p class="card-title"><img id="icon-two" src=""></p>
                             <p id="temp-two" class="card-text"></p>
                         </div>
                     </div>
                     <div class="card" style="max-width: 10rem;">
                         <div class="card-header" id="card-3"></div>
                         <div class="card-body">
-                            <p id="icon3" class="card-title"></p>
+                            <p class="card-title"><img id="icon-three" src=""></p>
                             <p id="temp-three" class="card-text"></p>
                         </div>
                     </div>
                     <div class="card" style="max-width: 10rem;">
                         <div class="card-header" id="card-4"></div>
                         <div class="card-body">
-                            <p id="icon4" class="card-title"></p>
+                            <p class="card-title"><img id="icon-four" src=""></p>
                             <p id="temp-four" class="card-text"></p>
                         </div>
                     </div>
                     <div class="card" style="max-width: 10rem;">
                         <div class="card-header" id="card-5"></div>
                         <div class="card-body">
-                            <p id="icon5" class="card-title"></p>
+                            <p class="card-title"><img id="icon-five" src=""></p>
                             <p id="temp-five" class="card-text"></p>
                         </div>
                     </div>
@@ -219,6 +219,14 @@
                 var iconOne = response.list[0].weather[0].icon;
                 console.log(iconOne);
                 $("#icon-one").attr("src", "https://openweathermap.org/img/wn/" + iconOne + "@2x.png");
+                var iconTwo = response.list[1].weather[0].icon;
+                $("#icon-two").attr("src", "https://openweathermap.org/img/wn/" + iconTwo + "@2x.png");
+                var iconThree = response.list[2].weather[0].icon;
+                $("#icon-three").attr("src", "https://openweathermap.org/img/wn/" + iconThree + "@2x.png");
+                var iconFour = response.list[3].weather[0].icon;
+                $("#icon-four").attr("src", "https://openweathermap.org/img/wn/" + iconFour + "@2x.png");
+                var iconFive = response.list[4].weather[0].icon;
+                $("#icon-five").attr("src", "https://openweathermap.org/img/wn/" + iconFive + "@2x.png");
                
             })
         }
