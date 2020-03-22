@@ -53,7 +53,6 @@
                 </div>
             </div>
             <div class="col-md-10">
-                <!-- <div class="row"> -->
 
                 <h1 id="city"></h1>
                 <h2 id="temp">Temperature</h2>
@@ -71,36 +70,36 @@
                     <div class="card" style="max-width: 10rem;">
                         <div class="card-header" id="card-1"></div>
                         <div class="card-body">
-                            <h5 class="card-title">Primary card title</h5>
-                            <p class="card-text">Icon, temp, humidity</p>
+                            <i id="icon-one" class="card-title"></i>
+                            <p id="temp-one" class="card-text"> </p>
                         </div>
                     </div>
                     <div class="card" style="max-width: 10rem;">
-                        <div class="card-header" id="card-2">day/date</div>
+                        <div class="card-header" id="card-2"></div>
                         <div class="card-body">
-                            <h5 class="card-title">Secondary card title</h5>
-                            <p class="card-text">Icon, temp, humidity</p>
+                            <p id="icon2" class="card-title"></p>
+                            <p id="temp-two" class="card-text"></p>
                         </div>
                     </div>
                     <div class="card" style="max-width: 10rem;">
-                        <div class="card-header" id="card-3">day/date</div>
+                        <div class="card-header" id="card-3"></div>
                         <div class="card-body">
-                            <h5 class="card-title">Success card title</h5>
-                            <p class="card-text">Icon, temp, humidity</p>
+                            <p id="icon3" class="card-title"></p>
+                            <p id="temp-three" class="card-text"></p>
                         </div>
                     </div>
                     <div class="card" style="max-width: 10rem;">
-                        <div class="card-header" id="card-4">day/date</div>
+                        <div class="card-header" id="card-4"></div>
                         <div class="card-body">
-                            <h5 class="card-title">Danger card title</h5>
-                            <p class="card-text">Icon, temp, humidity</p>
+                            <p id="icon4" class="card-title"></p>
+                            <p id="temp-four" class="card-text"></p>
                         </div>
                     </div>
                     <div class="card" style="max-width: 10rem;">
-                        <div class="card-header" id="card-5">day/date</div>
+                        <div class="card-header" id="card-5"></div>
                         <div class="card-body">
-                            <h5 class="card-title">Warning card title</h5>
-                            <p class="card-text">Icon, temp, humidity</p>
+                            <p id="icon5" class="card-title"></p>
+                            <p id="temp-five" class="card-text"></p>
                         </div>
                     </div>
                 </div>
@@ -202,6 +201,10 @@
                 var longitude = response.coord.lon;
                 index(latitude, longitude);
                 console.log(latitude, longitude);
+                var iconOne = response.weather[0].icon;
+                // $("#icon-one").attr(src=iconOne);
+                console.log(iconOne);
+                // $("#temp-one").val(response.main.temp);
             })
         }
         // call function getlatestsearch to put city into input field
