@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -70,7 +71,7 @@
                     <div class="card" style="max-width: 10rem;">
                         <div class="card-header" id="card-1"></div>
                         <div class="card-body">
-                            <p id="icon-one" class="card-title"></p>
+                            <p class="card-title"><img id="icon-one" src=""></p>
                             <p id="temp-one" class="card-text"></p>
                         </div>
                     </div>
@@ -200,9 +201,7 @@
                 var longitude = response.coord.lon;
                 index(latitude, longitude);
                 console.log(latitude, longitude);
-                var iconOne = response.weather[0].icon;
-                console.log(iconOne);
-                $("#icon-one").attr(src=iconOne);
+               
                 
             })
             var fiveDayURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + userCity + "&units=imperial&appid=d3c897154ff62ec9770b10172a75be35"
@@ -217,6 +216,10 @@
                 $("#temp-three").text("Temp:  " + response.list[2].main.temp + "°F");
                 $("#temp-four").text("Temp:  " + response.list[3].main.temp + "°F");
                 $("#temp-five").text("Temp:  " + response.list[4].main.temp + "°F");
+                var iconOne = response.list[0].weather[0].icon;
+                console.log(iconOne);
+                $("#icon-one").attr("src", "https://openweathermap.org/img/wn/" + iconOne + "@2x.png");
+               
             })
         }
         // call function getlatestsearch to put city into input field
@@ -227,3 +230,15 @@
 </body>
 
 </html>
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
