@@ -33,37 +33,37 @@
                     <table>
                         <tr>
                             <td>
-                                <button id="Austin">Austin</button>
+                                <button class="city-button" id="austin">Austin</button>
 
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <button id="Baltimore">Baltimore</button>
+                                <button class="city-button" id="Baltimore">Baltimore</button>
 
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <button id="Denver">Denver</button>
+                                <button class="city-button" id="Denver">Denver</button>
 
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <button id="New York">New York</button>
+                                <button class="city-button" id="New York">New York</button>
 
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <button id="Los Angeles">Los Angeles</button>
+                                <button class="city-button" id="Los Angeles">Los Angeles</button>
 
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <button id="Detroit">Detroit</button>
+                                <button class="city-button" id="Detroit">Detroit</button>
 
                             </td>
                         </tr>
@@ -135,6 +135,7 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
     <script type="text/javascript">
+
         var dayOne = moment();
         var dayCardOne = document.getElementById("card-1");
         dayCardOne.innerHTML = dayOne.format("MM/DD/YYYY");
@@ -159,12 +160,7 @@
 
 
         })
-        function featureCities() {
-            var austin = document.getElementById("Austin");
-            austin.addEventListener("click", function () {
-                $("#user-input").text(austin);
-            })
-        }
+
         function index(lat, lon) {
             console.log(lat, lon, "inside UV Index");
             $.ajax({
@@ -197,6 +193,7 @@
             document.getElementById("user-input").value = localStorage.getItem("#user-input");
             console.log(document.getElementById("user-input").value)
             returnAll(document.getElementById("user-input").value);
+            
         }
         // returns all info to page via most recent city storage by doing ajax call again
         function returnAll(userCity) {
@@ -223,6 +220,8 @@
                 var longitude = response.coord.lon;
                 index(latitude, longitude);
                 console.log(latitude, longitude);
+                var currentDate = moment().format("MM/DD/YYYY");
+                $("#city").append(": " + currentDate);
 
 
             })
@@ -239,32 +238,32 @@
                 $("#temp-four").text("Temp:  " + response.list[3].main.temp + "°F");
                 $("#temp-five").text("Temp:  " + response.list[4].main.temp + "°F");
                 $("#hum-one").text("Humidity: " + response.list[0].main.humidity + "%");
-
                 $("#hum-two").text("Humidity: " + response.list[1].main.humidity + "%");
-
                 $("#hum-three").text("Humidity: " + response.list[2].main.humidity + "%");
-
                 $("#hum-four").text("Humidity: " + response.list[3].main.humidity + "%");
-
                 $("#hum-five").text("Humidity: " + response.list[4].main.humidity + "%");
                 var iconOne = response.list[0].weather[0].icon;
                 console.log(iconOne);
                 $("#icon-one").attr("src", "https://openweathermap.org/img/wn/" + iconOne + "@2x.png");
                 var iconTwo = response.list[1].weather[0].icon;
+                console.log(iconTwo);
                 $("#icon-two").attr("src", "https://openweathermap.org/img/wn/" + iconTwo + "@2x.png");
                 var iconThree = response.list[2].weather[0].icon;
+                console.log(iconThree);
                 $("#icon-three").attr("src", "https://openweathermap.org/img/wn/" + iconThree + "@2x.png");
                 var iconFour = response.list[3].weather[0].icon;
+                console.log(iconFour);
                 $("#icon-four").attr("src", "https://openweathermap.org/img/wn/" + iconFour + "@2x.png");
                 var iconFive = response.list[4].weather[0].icon;
+                console.log(iconFive);
                 $("#icon-five").attr("src", "https://openweathermap.org/img/wn/" + iconFive + "@2x.png");
 
             })
+
         }
-        // call function getlatestsearch to put city into input field
+
         getLatestSearch();
-        // and then get all weather info for city by calling function returnAll
-        // returnAll(userCity);
+
     </script>
 </body>
 
