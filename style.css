@@ -108,3 +108,9 @@ h2 {
     width: 90px;
     height: 90px;
 } */
+.col-md-2 {
+    float: left;
+}
+.col-md-10 {
+    float: left;
+}

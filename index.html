@@ -73,6 +73,7 @@
                         <div class="card-body">
                             <p class="card-title"><img id="icon-one" src=""></p>
                             <p id="temp-one" class="card-text"></p>
+                            <p id="hum-one"></p>
                         </div>
                     </div>
                     <div class="card" style="max-width: 10rem;">
@@ -137,12 +138,12 @@
 
 
         })
-        $("#Austin").on("click", function () {
-            $.ajax({
-                type: "GET",
-                url: ""
-            })
+        function featureCities() {
+        var austin = document.getElementById("Austin");
+        austin.addEventListener("click", function() {
+            $("#user-input").text(austin);
         })
+        }
         function index(lat, lon) {
             console.log(lat, lon, "inside UV Index");
             $.ajax({
@@ -216,6 +217,7 @@
                 $("#temp-three").text("Temp:  " + response.list[2].main.temp + "°F");
                 $("#temp-four").text("Temp:  " + response.list[3].main.temp + "°F");
                 $("#temp-five").text("Temp:  " + response.list[4].main.temp + "°F");
+                $("#hum-one").text("Humidity: " + response.list[0].main.humidity);
                 var iconOne = response.list[0].weather[0].icon;
                 console.log(iconOne);
                 $("#icon-one").attr("src", "https://openweathermap.org/img/wn/" + iconOne + "@2x.png");
@@ -238,15 +240,3 @@
 </body>
 
 </html>
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
