@@ -146,13 +146,25 @@
         var dayFive = moment().add(4, "days");
         var dayCardFive = document.getElementById("card-5");
         dayCardFive.innerHTML = dayFive.format("MM/DD/YYYY");
-       
+        var whateverCity = $("#user-input").val()
+
         $("#button").on("click", function (event) {
             event.preventDefault();
             var userCity = $("#user-input").val();
             returnAll(userCity);
         })
+        $("#austin").on("click", function() {
+            event.preventDefault();
+            var austin = $("#austin").text();
+            console.log(austin);
+            var newInput = $("<input>");
+            $("#user-input").replaceWith(newInput);
+            $(newInput).val(austin);
+            returnAll(austin);
+            
 
+            
+        })
         function index(lat, lon) {
             console.log(lat, lon, "inside UV Index");
             $.ajax({
